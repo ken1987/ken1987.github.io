@@ -1,10 +1,175 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
 	<meta charset="UTF-8">
-	<title>hi</title>
+	<title>Document</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			background-color: #f6f5ee;
+		}
+		.center{
+			text-align: center;
+		}
+		/* head */
+		.head{
+			position: relative;
+			margin:100px auto;
+			width:100px;
+			height:100px;
+		}
+		.img{
+			width:100%;
+			height:100%;
+			border-radius:50%;
+			box-shadow: 0 3px 5px #b0b0b0;
+			background:url(head.jpg) center center no-repeat;
+			cursor:pointer;
+		}
+		/* loading */
+		.loading{
+			animation:loading 5s infinite linear;
+		}
+
+		@keyframes loading{
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* button */
+		.btn {
+			opacity:0;
+			cursor:pointer;
+			font-size: 15px;
+			padding: 14px 20px 11px;
+			font-weight: 500;
+			color: #fff;
+			text-transform: uppercase;
+			border-radius: 3px;
+			background: #1abc9c;
+		    margin-top: -3px;
+		    box-shadow: 0px 3px 0px 0px #148f77;
+		}
+		.btn:active{
+			opacity: 0.8;
+			transition:opacity 0.3s;
+		}
+		/* tooltip */
+		.tooltip{
+			position: absolute;
+		    z-index: 3;
+		    top: -34px;
+    		left: 71px;
+		    padding: 10px;
+		    background: white;
+		    color: #3d464d;
+		    font: 500 13px/14px arial;
+		    border-radius: 4px;
+		    white-space: nowrap;
+		    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+		    min-width: 97px;
+		    text-align: center;
+		    border: 1px solid #edefed;
+		    opacity:0;
+		}
+
+		.tooltip:before {
+		    left: 0;
+    		bottom: 5px;
+		    position: absolute;
+		    margin-top: -17px;
+		    margin-left: -10px;
+		    content: '';
+		    width: 0;
+		    height: 0;
+		    border-style: solid;
+		    border-width: 0 9.5px 10px 9.5px;
+		    border-color: transparent transparent white transparent;
+		}
+
+		.show{
+			opacity:1;
+			transition: opacity 2s;
+		}
+	</style>
 </head>
 <body>
-	hi
+	<div class="head">
+		<div class="img" id="img"></div>
+		<div class="tooltip" id="tooltip">hi</div>
+	</div>
+	<div class="center">
+		<a class="btn" id="jokeBtn">讲笑话</a>
+		<a class="btn" id="musicBtn">唱个曲</a>
+	</div>
+	<audio id="audio" hidden></audio>
+	<script>
+		var audio = document.getElementById("audio"),
+			jokeBtn = document.getElementById("jokeBtn"),
+			musicBtn = document.getElementById("musicBtn"),
+			img = document.getElementById("img"),
+			tooltip = document.getElementById("tooltip");
+
+		audio.onwaiting = function() {
+			img.setAttribute("class", "img loading");
+			tooltip.innerHTML="正在加载...";
+		};
+
+		audio.oncanplay = function() {
+			img.setAttribute("class", "img");
+		};
+
+		audio.onplaying = function() {
+			img.setAttribute("class", "img");
+			tooltip.innerHTML="hello，七夕快乐~";
+		};
+
+		audio.onpause=function(){
+			jokeBtn.setAttribute("class", "btn show");
+			musicBtn.setAttribute("class", "btn show");
+			tooltip.innerHTML="听我讲个笑话吧~";
+
+			audio.onpause=function() {
+				img.setAttribute("class", "img");
+				tooltip.innerHTML="随便再点个~";
+			};;
+
+			audio.onplaying = function() {
+				img.setAttribute("class", "img");
+				tooltip.innerHTML="点我暂停";
+			};
+
+			jokeBtn.onclick = function() {
+				audio.pause();
+				audio.src = Math.round(Math.random()*6)+".mp3";//7个笑话
+				audio.play();
+			};
+
+			musicBtn.onclick = function() {
+				audio.pause();
+				audio.src = "m"+Math.round(Math.random()*2)+".mp3";//3个音乐
+				audio.play();
+			};
+
+			img.onclick=function(){
+				audio.pause();
+				img.setAttribute("class", "img");
+			}
+		};
+
+		audio.src = "hello.mp3";
+		audio.play();
+		tooltip.setAttribute("class", "tooltip show");
+	</script>
 </body>
 </html>
