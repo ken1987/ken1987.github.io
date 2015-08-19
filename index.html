@@ -118,7 +118,9 @@
 			jokeBtn = document.getElementById("jokeBtn"),
 			musicBtn = document.getElementById("musicBtn"),
 			img = document.getElementById("img"),
-			tooltip = document.getElementById("tooltip");
+			tooltip = document.getElementById("tooltip"),
+			jokeList=["http://pan.baidu.com/s/1o6473my","http://pan.baidu.com/s/1eQdd1n0","http://pan.baidu.com/s/1hqEnkQK","http://pan.baidu.com/s/1ntAFjOP","http://pan.baidu.com/s/1qWmm5RY","http://pan.baidu.com/s/1o65n0fC"],
+			musicList=["http://pan.baidu.com/s/1BH6cY"];
 
 		audio.onwaiting = function() {
 			img.setAttribute("class", "img loading");
@@ -151,13 +153,13 @@
 
 			jokeBtn.onclick = function() {
 				audio.pause();
-				audio.src = Math.round(Math.random()*5)+".mp3";//6个笑话
+				audio.src = jokeList[Math.round(Math.random()*5)];//6个笑话
 				audio.play();
 			};
 
 			musicBtn.onclick = function() {
 				audio.pause();
-				audio.src = "m"+Math.round(Math.random()*2)+".mp3";//3个音乐
+				audio.src = musicList[Math.round(Math.random()*2)];//3个音乐
 				audio.play();
 			};
 
@@ -167,7 +169,7 @@
 			}
 		};
 
-		audio.src = "hello.mp3";
+		audio.src = "http://pan.baidu.com/s/1eQwapmM";
 		audio.play();
 		tooltip.setAttribute("class", "tooltip show");
 	</script>
