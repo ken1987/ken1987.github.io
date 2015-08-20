@@ -119,8 +119,17 @@
 			musicBtn = document.getElementById("musicBtn"),
 			img = document.getElementById("img"),
 			tooltip = document.getElementById("tooltip"),
-			jokeList=["http://pan.baidu.com/s/1o6473my","http://pan.baidu.com/s/1eQdd1n0","http://pan.baidu.com/s/1hqEnkQK","http://pan.baidu.com/s/1ntAFjOP","http://pan.baidu.com/s/1qWmm5RY","http://pan.baidu.com/s/1o65n0fC"],
-			musicList=["http://mail.qq.com/cgi-bin/download?mailid=ZC4420-A6ADfdr~e_AlFgVQl1rJR58&filename=0.mp3&sid=iimisBczSMMWbn0o"];
+			jokeList=[
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-A6ADfdr~e_AlFgVQl1rJR58&filename=0.mp3&sid=iimisBczSMMWbn0o",
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=1.mp3&sid=iimisBczSMMWbn0o",
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=2.mp3&sid=iimisBczSMMWbn0o",
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=3.mp3&sid=iimisBczSMMWbn0o",
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=4.mp3&sid=iimisBczSMMWbn0o",
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=5.mp3&sid=iimisBczSMMWbn0o"
+			],
+			musicList=[
+				"http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=m0.mp3&sid=iimisBczSMMWbn0o"
+			];
 
 		audio.onwaiting = function() {
 			img.setAttribute("class", "img loading");
@@ -168,7 +177,7 @@
 				img.setAttribute("class", "img");
 			}
 		};
-		audio.src = "http://mail.qq.com/cgi-bin/download?mailid=ZC4420-A6ADfdr~e_AlFgVQl1rJR58&filename=0.mp3&sid=iimisBczSMMWbn0o";
+		audio.src = "http://mail.qq.com/cgi-bin/download?mailid=ZC4420-ErEgaM_kGJNGFAdSfFkQf58&filename=hello.mp3&sid=iimisBczSMMWbn0o";
 		audio.play();
 		tooltip.setAttribute("class", "tooltip show");
 	</script>
