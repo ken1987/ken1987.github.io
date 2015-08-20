@@ -120,34 +120,10 @@
 			img = document.getElementById("img"),
 			tooltip = document.getElementById("tooltip"),
 			timer;
-		
-		/* 解决移动端不能自动播放音频问题 */
-		img.onclick=function(){
-			audio.play();
-		};
 
-		timer=setTimeout(function(){
-			tooltip.innerHTML="点我~点我~";
-		},2000);
-
-		audio.onwaiting = function() {
-			img.setAttribute("class", "img loading");
-			tooltip.innerHTML="正在加载...";
-			timer &&　clearTimeout(timer);
-		};
-
-		audio.oncanplay = function() {
-			img.setAttribute("class", "img");
-		};
-		audio.onplaying = function() {
-			img.setAttribute("class", "img");
-			tooltip.innerHTML="hello，七夕快乐~";
-		};
-
-		audio.onpause=function(){
+		var ready=function(){
 			jokeBtn.setAttribute("class", "btn show");
 			musicBtn.setAttribute("class", "btn show");
-			tooltip.innerHTML="听我讲个笑话吧~";
 
 			audio.onpause=function() {
 				img.setAttribute("class", "img");
@@ -176,6 +152,33 @@
 				img.setAttribute("class", "img");
 			};
 		};
+
+		/* 解决移动端不能自动播放音频问题 */
+		timer=setTimeout(function(){
+			img.setAttribute("class", "img");
+			tooltip.innerHTML="hello，七夕快乐~";
+			ready();
+		},1000);
+
+		audio.onwaiting = function() {
+			img.setAttribute("class", "img loading");
+			tooltip.innerHTML="正在加载...";
+			timer &&　clearTimeout(timer);
+		};
+
+		audio.oncanplay = function() {
+			img.setAttribute("class", "img");
+		};
+		audio.onplaying = function() {
+			img.setAttribute("class", "img");
+			tooltip.innerHTML="hello，七夕快乐~";
+		};
+
+		audio.onpause=function(){
+			tooltip.innerHTML="听我讲个笑话吧~";
+			ready();
+		};
+
 		audio.src = "http://test-10004444.file.myqcloud.com/hello.mp3";
 		audio.play();
 		tooltip.setAttribute("class", "tooltip show");
