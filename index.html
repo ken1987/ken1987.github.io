@@ -124,15 +124,15 @@
 		<a class="btn" id="jokeBtn">讲笑话</a>
 		<a class="btn" id="musicBtn">唱个曲</a>
 	</div>
-	<audio id="audio" hidden></audio>
+	<audio id="audio" controls></audio>
 	<script>
 		var audio = document.getElementById("audio"),
 			jokeBtn = document.getElementById("jokeBtn"),
 			musicBtn = document.getElementById("musicBtn"),
 			img = document.getElementById("img"),
 			tooltip = document.getElementById("tooltip"),
-			timer;
-
+			timer,
+			status;
 
 		var ready=function(){
 			jokeBtn.setAttribute("class", "btn show");
@@ -141,11 +141,13 @@
 			audio.onended=function() {
 				img.setAttribute("class", "img");
 				tooltip.innerHTML="随便再点个~";
+				status=0;
 			};
 
-			audio.oncanplaythrough = function() {
+			audio.onplaying = function() {
 				img.setAttribute("class", "img");
 				tooltip.innerHTML="点我暂停";
+				status=1;
 			};
 
 			jokeBtn.onclick = function() {
@@ -161,6 +163,7 @@
 			};
 
 			img.onclick=function(){
+				if(!status)return; 
 				if(audio.paused){
 					audio.play();
 					tooltip.innerHTML="点我暂停";
@@ -185,7 +188,7 @@
 			timer &&　clearTimeout(timer);
 		};
 
-		audio.oncanplaythrough = function() {
+		audio.onplaying = function() {
 			img.setAttribute("class", "img");
 			tooltip.innerHTML="hello，七夕快乐~";
 		};
