@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>七夕快乐</title>
+	<title>Document</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -34,18 +34,15 @@
 		}
 		/* loading */
 		.loading{
-			-webkit-animation:loading 5s infinite linear;
 			animation:loading 5s infinite linear;
 		}
 
 		@keyframes loading{
 			0% {
-				-webkit-transform: rotate(0deg);
 				transform: rotate(0deg);
 			}
 			100% {
-				-webkit-transform: rotate(360deg);
-				transform: rotate(0deg);
+				transform: rotate(360deg);
 			}
 		}
 
@@ -65,7 +62,6 @@
 		}
 		.btn:active{
 			opacity: 0.8;
-			-webkit-transition:opacity 0.3s;
 			transition:opacity 0.3s;
 		}
 		/* tooltip */
@@ -103,7 +99,6 @@
 
 		.show{
 			opacity:1;
-			-webkit-transition: opacity 2s;
 			transition: opacity 2s;
 		}
 	</style>
@@ -124,17 +119,43 @@
 			musicBtn = document.getElementById("musicBtn"),
 			img = document.getElementById("img"),
 			tooltip = document.getElementById("tooltip"),
-			timer;
+			jokeList=[
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/e7f70c3cbc351fcd21c41b95db8305b8de6c3a0b7d8ba9bf41d16147bc6147be561629595c22fba85b438bc4c612eb7f81bdbaf7facf60f4c7315f16d9aba431?compressed=0&dtype=1&fname=0.mp3",
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/025c387e18c2b704b7488842ae37a1943c69870cdd742eda50aabd6757d38f3d12fbfe7d9f6075d525ddc946c6d9681f435ea734d8157a188d7c6b62bbf5e889?compressed=0&dtype=1&fname=1.mp3",
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/3066c1bf38e90214cd71c44a7934b73a24274464384f1e474350072f1baae441f198982fc4777b3df9bf8f7faf8a5df729b878d6aed7716e6eadbbb57cbf53c2?compressed=0&dtype=1&fname=2.mp3",
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/6eee732e06d42c08c6b9fe8bad31191ad2e188b631ffacbc1b74e80576d6cee55754433bb3410ccbc5263d7de3ccd4f1ecb142bb211481c2922e9fc4e3b869fd?compressed=0&dtype=1&fname=3.mp3",
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/779e47b44b9d44a148c277bbab1906b44529833742755310c30cc813ef1b143e0471782b81dd4e77165a66edacd98ab8627bcdcbd1ec26872987813eec4494fc?compressed=0&dtype=1&fname=4.mp3",
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/1ac7f6403a700dc5f33b555c3e8c21a87e5b6f670b215c6b17ae0eaa9e029024c2c47a5b241884850b489fcff857efe659d4842293fc47ad4dd775476223b0fd?compressed=0&dtype=1&fname=5.mp3"
+			],
+			musicList=[
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/0e6a1225b25d81df8d1a5c59f38e43a8620972b5ae7916e32596b8786fb708fe3e2567691a0b8043800086d7e4bf9adccf12b6e429f6aad2bcb30a2340a7f91b?compressed=0&dtype=1&fname=R50820-093635.mp3",
+				"http://sh-yun-ftn.weiyun.com/ftn_handler/6e3800a09ff635317faeeb1c3405d1da6009e42dbb74ad75247db71ec0e29293a698f8ed7815dfea8d6ba5d8168268f55f9f10f31aa86457b70749ab55017025?compressed=0&dtype=1&fname=m0.mp3",
+				"http://sz.btfs.mail.ftn.qq.com/ftn_handler/369f6ce62f7b7a9189b123b748163fe08ba7e2946781a8da89a1477c089cf7a8cba13787a8f41a7603954175b2d94093cbe58d4018f9d295107c303966c637d7?compressed=0&dtype=1&fname=R50820-094449.mp3"
+			];
 
+		audio.onwaiting = function() {
+			img.setAttribute("class", "img loading");
+			tooltip.innerHTML="正在加载...";
+		};
 
-		var ready=function(){
+		audio.oncanplay = function() {
+			img.setAttribute("class", "img");
+		};
+
+		audio.onplaying = function() {
+			img.setAttribute("class", "img");
+			tooltip.innerHTML="hello，七夕快乐~";
+		};
+
+		audio.onpause=function(){
 			jokeBtn.setAttribute("class", "btn show");
 			musicBtn.setAttribute("class", "btn show");
+			tooltip.innerHTML="听我讲个笑话吧~";
 
 			audio.onpause=function() {
 				img.setAttribute("class", "img");
 				tooltip.innerHTML="随便再点个~";
-			};
+			};;
 
 			audio.onplaying = function() {
 				img.setAttribute("class", "img");
@@ -143,49 +164,22 @@
 
 			jokeBtn.onclick = function() {
 				audio.pause();
-				audio.src = "http://test-10004444.file.myqcloud.com/"+Math.round(Math.random()*5)+".mp3";
+				audio.src = jokeList[Math.round(Math.random()*5)];//6个笑话
 				audio.play();
 			};
 
 			musicBtn.onclick = function() {
 				audio.pause();
-				audio.src = "http://test-10004444.file.myqcloud.com/m"+Math.round(Math.random()*2)+".mp3";
+				audio.src = musicList[Math.round(Math.random()*2)];//3个音乐
 				audio.play();
 			};
 
 			img.onclick=function(){
 				audio.pause();
 				img.setAttribute("class", "img");
-			};
+			}
 		};
-
-		/* 解决移动端不能自动播放音频问题 */
-		timer=setTimeout(function(){
-			img.setAttribute("class", "img");
-			tooltip.innerHTML="hello，七夕快乐~";
-			ready();
-		},1000);
-
-		audio.onwaiting = function() {
-			img.setAttribute("class", "img loading");
-			tooltip.innerHTML="正在加载...";
-			timer &&　clearTimeout(timer);
-		};
-
-		audio.oncanplay = function() {
-			img.setAttribute("class", "img");
-		};
-		audio.onplaying = function() {
-			img.setAttribute("class", "img");
-			tooltip.innerHTML="hello，七夕快乐~";
-		};
-
-		audio.onpause=function(){
-			tooltip.innerHTML="听我讲个笑话吧~";
-			ready();
-		};
-
-		audio.src = "http://test-10004444.file.myqcloud.com/hello.mp3";
+		audio.src = "http://sh-yun-ftn.weiyun.com/ftn_handler/637b263dd5ac9d8f534acd7f2fcd6fe73db09cda7761f59c6dd618503676f01c8c828832165682f0dee4cbd337cbffa00711c75e814de6bc9dab790fef8f2a22?compressed=0&dtype=1&fname=hello.mp3";
 		audio.play();
 		tooltip.setAttribute("class", "tooltip show");
 	</script>
