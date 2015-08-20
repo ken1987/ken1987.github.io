@@ -120,6 +120,7 @@
 			img = document.getElementById("img"),
 			tooltip = document.getElementById("tooltip"),
 			timer;
+		
 		/* 解决移动端不能自动播放音频问题 */
 		img.onclick=function(){
 			audio.play();
@@ -128,7 +129,6 @@
 		timer=setTimeout(function(){
 			tooltip.innerHTML="点我~点我~";
 		},2000);
-
 
 		audio.onwaiting = function() {
 			img.setAttribute("class", "img loading");
