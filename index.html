@@ -118,17 +118,27 @@
 			jokeBtn = document.getElementById("jokeBtn"),
 			musicBtn = document.getElementById("musicBtn"),
 			img = document.getElementById("img"),
-			tooltip = document.getElementById("tooltip");
+			tooltip = document.getElementById("tooltip"),
+			timer;
+		/* 解决移动端不能自动播放音频问题 */
+		img.onclick=function(){
+			audio.play();
+		};
+
+		timer=setTimeout(function(){
+			tooltip.innerHTML="点我~点我~";
+		},2000);
+
 
 		audio.onwaiting = function() {
 			img.setAttribute("class", "img loading");
 			tooltip.innerHTML="正在加载...";
+			timer &&　clearTimeout(timer);
 		};
 
 		audio.oncanplay = function() {
 			img.setAttribute("class", "img");
 		};
-
 		audio.onplaying = function() {
 			img.setAttribute("class", "img");
 			tooltip.innerHTML="hello，七夕快乐~";
