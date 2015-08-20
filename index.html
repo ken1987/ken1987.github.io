@@ -155,7 +155,7 @@
 			audio.onpause=function() {
 				img.setAttribute("class", "img");
 				tooltip.innerHTML="随便再点个~";
-			};;
+			};
 
 			audio.onplaying = function() {
 				img.setAttribute("class", "img");
@@ -177,9 +177,9 @@
 			img.onclick=function(){
 				audio.pause();
 				img.setAttribute("class", "img");
-			}
+			};
 		};
-		audio.src = "http://sh-yun-ftn.weiyun.com/ftn_handler/637b263dd5ac9d8f534acd7f2fcd6fe73db09cda7761f59c6dd618503676f01c8c828832165682f0dee4cbd337cbffa00711c75e814de6bc9dab790fef8f2a22?compressed=0&dtype=1&fname=hello.mp3";
+		audio.src = "http://note.youdao.com/yws/public/resource/471ab409d72f23fc6887e14b416052ea/23DF40719BFA4455AB0C3D6E7C874F4E";
 		audio.play();
 		tooltip.setAttribute("class", "tooltip show");
 	</script>
