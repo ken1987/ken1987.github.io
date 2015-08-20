@@ -34,15 +34,18 @@
 		}
 		/* loading */
 		.loading{
+			-webkit-animation:loading 5s infinite linear;
 			animation:loading 5s infinite linear;
 		}
 
 		@keyframes loading{
 			0% {
+				-webkit-transform: rotate(0deg);
 				transform: rotate(0deg);
 			}
 			100% {
-				transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+				transform: rotate(0deg);
 			}
 		}
 
@@ -62,6 +65,7 @@
 		}
 		.btn:active{
 			opacity: 0.8;
+			-webkit-transition:opacity 0.3s;
 			transition:opacity 0.3s;
 		}
 		/* tooltip */
@@ -99,6 +103,7 @@
 
 		.show{
 			opacity:1;
+			-webkit-transition: opacity 2s;
 			transition: opacity 2s;
 		}
 	</style>
