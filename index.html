@@ -34,15 +34,18 @@
 		}
 		/* loading */
 		.loading{
+			-webkit-animation:loading 5s infinite linear;
 			animation:loading 5s infinite linear;
 		}
 
 		@keyframes loading{
 			0% {
+				-webkit-transform: rotate(0deg);
 				transform: rotate(0deg);
 			}
 			100% {
-				transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+				transform: rotate(0deg);
 			}
 		}
 
@@ -62,6 +65,7 @@
 		}
 		.btn:active{
 			opacity: 0.8;
+			-webkit-transition:opacity 0.3s;
 			transition:opacity 0.3s;
 		}
 		/* tooltip */
@@ -99,6 +103,7 @@
 
 		.show{
 			opacity:1;
+			-webkit-transition: opacity 2s;
 			transition: opacity 2s;
 		}
 	</style>
@@ -118,8 +123,12 @@
 			jokeBtn = document.getElementById("jokeBtn"),
 			musicBtn = document.getElementById("musicBtn"),
 			img = document.getElementById("img"),
+<<<<<<< HEAD
 			tooltip = document.getElementById("tooltip"),
 			timer;
+=======
+			tooltip = document.getElementById("tooltip");
+>>>>>>> gh-pages
 
 		var ready=function(){
 			jokeBtn.setAttribute("class", "btn show");
@@ -151,6 +160,7 @@
 				audio.pause();
 				img.setAttribute("class", "img");
 			};
+<<<<<<< HEAD
 		};
 
 		/* 解决移动端不能自动播放音频问题 */
@@ -179,6 +189,9 @@
 			ready();
 		};
 
+=======
+		};
+>>>>>>> gh-pages
 		audio.src = "http://test-10004444.file.myqcloud.com/hello.mp3";
 		audio.play();
 		tooltip.setAttribute("class", "tooltip show");
