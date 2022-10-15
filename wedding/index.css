@@ -1,0 +1,269 @@
+*{
+	padding:0;
+	margin:0;
+	box-sizing: border-box;
+}
+
+[v-if]{
+	display:hidden;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 1s;
+}
+.bounce-leave-active {
+  animation: bounce-out .2s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+html,
+body{
+    height:100%;
+}
+
+body {
+    background-color: #AF1014;
+}
+
+#wrap{
+    height:100%;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image:url(http://pic.kuaizhan.com/g2/M01/3D/D1/CgpQVFeK0Y-AdI4TAAC6uT_n1KY9978543);
+}
+
+.m-page{
+	width: 100%;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0;
+	text-align: center;
+}
+
+.m-page img{
+	max-width: 100%;
+	vertical-align: top;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.m-page--fullbody .m-page__header{
+	top:0;
+	width:100%;
+	position: absolute;
+	left:0;
+}
+
+.m-page--fullbody .m-page__body{
+	height:100%;
+}
+
+.m-page__body{
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.m-page__footer{
+	bottom:0;
+	width:100%;
+	position: absolute;
+	left:0;
+}
+
+.icon-next{
+	position: absolute;
+    bottom: 10px;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -ms-animation-duration: 1s;
+    -ms-animation-iteration-count: infinite;
+    z-index: 1;
+    height: 20px;
+    left: 50%;
+    width: 50px;
+    margin-left: -25px;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    background: url(http://kzcdn.itc.cn/pf/page/images/0385d44f.icon_pointer.png) no-repeat;
+    background-position: center;
+
+
+    -webkit-animation-name: fadeOutUp;
+    animation-name: fadeOutUp
+
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+    z-index: 1000;
+}
+
+@-webkit-keyframes fadeOutUp {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+}
+
+
+.m-head-img{
+	position: relative;
+	z-index:1;
+	background:#AD0E1A url(http://pic.kuaizhan.com/g1/M01/3E/F8/CgpQU1eK2gOAeCC7AAPHYKQ9JJs0532385);
+	background-size:cover;
+	width:60%;
+	padding:9%;
+	margin-left:auto;
+	margin-right:auto;
+    border-radius: 50%;
+}
+
+.m-head-img img{
+	width:100%;
+	height:100%;
+	border-radius:50%;
+	margin-top:2px;/*bug*/
+}
+
+/* 页面1 */
+
+.page1{
+	background:url(http://pic.kuaizhan.com/g1/M01/3F/14/wKjmqVeK2WqAIw2VAADHPeLbLkY4370235);
+}
+
+.page1 .huaban{
+	opacity: 0.5;
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+.page1 .xi{
+	width:135px;
+	height:128px;
+	position: absolute;
+	top:0;
+	left:50%;
+	margin-left:-64px;
+}
+
+.page1 .name{
+	width:1em;
+	color:#d2b573;
+	font-size:24px;
+	line-height: 30px;
+	font-family: '宋体';
+	font-weight:bold;
+	display: inline-block;
+	padding: 20px 5px;
+}
+
+.page1 .word{
+	width:70%;
+	margin-bottom:-15%;
+}
+
+.page1 .couple{
+	width:50%;
+}
+
+/* 页面2 */
+.page2{
+	background:url(http://pic.kuaizhan.com/g1/M01/3F/14/wKjmqVeK2WqAIw2VAADHPeLbLkY4370235);
+    background-size: cover;
+}
+.page2 .m-page__header,
+.page2 .m-page__footer{
+	height:50%;
+	overflow:hidden;
+	width: 104%;
+    margin-left: -2%;
+    max-width: none;
+}
+.page2 .m-page__header{
+    margin-top: -2%;
+}
+.page2 .m-page__footer{
+    margin-bottom: -2%;
+}
+.page2 .m-page__footer img{
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+
+.page2 .m-head-img{
+	margin-top:30%;
+}
+
+.page2 .huaban{
+	position: absolute;
+	top:0;
+	left:-10px;
+}
+
+.page2 .huaban img{
+	width:100%;
+}
+.page2 .man{
+	position: relative;
+	z-index: 1;
+}
+.page2 .man img {
+    width: 90%;
+    margin-top: 1.5rem;
+}
+
+.page3{
+	background:url(http://pic.kuaizhan.com/g1/M00/3F/BC/wKjmqVeLD9yAaLEAAAKDvUcfcUQ7797075);
+	background-size: 100% 100%;
+	padding-top: 1rem;
+}
+
+.page3 img{
+	width: 92%;
+}
